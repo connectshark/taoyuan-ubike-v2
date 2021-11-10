@@ -6,13 +6,15 @@
 export default {
   name: 'App',
   components: {
+  },
+  setup () {
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Roboto Mono', 'Noto Sans TC', sans-serif;
+  font-family: 'Roboto Mono', monospace, 'openhuninn', 'Noto Sans TC', sans-serif;
   text-align: center;
 }
 </style>

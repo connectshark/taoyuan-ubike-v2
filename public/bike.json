@@ -1,0 +1,68 @@
+[
+  {
+    "StationUID": "TAO2001",
+    "StationID": "2001",
+    "AuthorityID": "TAO",
+    "StationName": {
+      "Zh_tw": "YouBike1.0_中央大學圖書館",
+      "En": "YouBike1.0_National Central University Library"
+    },
+    "StationPosition": {
+      "PositionLon": 121.194666,
+      "PositionLat": 24.968128,
+      "GeoHash": "wsqnjc73b"
+    },
+    "StationAddress": {
+      "Zh_tw": "中大路300號(中央大學校內圖書館前)",
+      "En": "No.300, Zhongda Rd."
+    },
+    "BikesCapacity": 60,
+    "ServiceType": 1,
+    "SrcUpdateTime": "2021-11-10T17:36:21+08:00",
+    "UpdateTime": "2021-11-10T17:37:37+08:00"
+  },
+  {
+    "StationUID": "TAO2002",
+    "StationID": "2002",
+    "AuthorityID": "TAO",
+    "StationName": {
+      "Zh_tw": "YouBike1.0_中壢高中",
+      "En": "YouBike1.0_Jhungli Senior High School"
+    },
+    "StationPosition": {
+      "PositionLon": 121.212038,
+      "PositionLat": 24.960815,
+      "GeoHash": "wsqjypzzm"
+    },
+    "StationAddress": {
+      "Zh_tw": "中央西路二段215號對面人行道",
+      "En": "No.215, Sec. 2, Zhongyang W. Rd. (opposite)"
+    },
+    "BikesCapacity": 52,
+    "ServiceType": 1,
+    "SrcUpdateTime": "2021-11-10T17:36:39+08:00",
+    "UpdateTime": "2021-11-10T17:37:37+08:00"
+  },
+  {
+    "StationUID": "TAO2003",
+    "StationID": "2003",
+    "AuthorityID": "TAO",
+    "StationName": {
+      "Zh_tw": "YouBike1.0_中正公園(中美路)",
+      "En": "YouBike1.0_Zhongzheng Park (Zhongmei Rd.)"
+    },
+    "StationPosition": {
+      "PositionLon": 121.224805,
+      "PositionLat": 24.959113,
+      "GeoHash": "wsqjyx9jq"
+    },
+    "StationAddress": {
+      "Zh_tw": "中美路101-113號對面人行道",
+      "En": "No.101 to No.113, Zhongmei Rd. (opposite)"
+    },
+    "BikesCapacity": 54,
+    "ServiceType": 1,
+    "SrcUpdateTime": "2021-11-10T17:36:38+08:00",
+    "UpdateTime": "2021-11-10T17:37:37+08:00"
+  }
+]
