@@ -1,0 +1,32 @@
+[
+  {
+    "StationUID": "TAO2001",
+    "StationID": "2001",
+    "ServiceStatus": 1,
+    "ServiceType": 1,
+    "AvailableRentBikes": 2,
+    "AvailableReturnBikes": 55,
+    "SrcUpdateTime": "2021-11-10T18:00:20+08:00",
+    "UpdateTime": "2021-11-10T18:01:37+08:00"
+  },
+  {
+    "StationUID": "TAO2002",
+    "StationID": "2002",
+    "ServiceStatus": 1,
+    "ServiceType": 1,
+    "AvailableRentBikes": 2,
+    "AvailableReturnBikes": 47,
+    "SrcUpdateTime": "2021-11-10T18:00:39+08:00",
+    "UpdateTime": "2021-11-10T18:01:37+08:00"
+  },
+  {
+    "StationUID": "TAO2003",
+    "StationID": "2003",
+    "ServiceStatus": 1,
+    "ServiceType": 1,
+    "AvailableRentBikes": 30,
+    "AvailableReturnBikes": 22,
+    "SrcUpdateTime": "2021-11-10T18:00:34+08:00",
+    "UpdateTime": "2021-11-10T18:01:37+08:00"
+  }
+]
