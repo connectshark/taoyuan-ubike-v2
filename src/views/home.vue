@@ -1,13 +1,16 @@
 <template>
-<div class="search-bar">
-  <SearchBar/>
+<div class="home">
+  <div class="search-bar">
+    <SearchBar/>
+  </div>
+  <div id="map"></div>
 </div>
-<div id="map"></div>
 </template>
 
 <script>
 import SearchBar from '../components/searchBar.vue'
 import { onMounted } from 'vue'
+import formatter from '../utils/formatter'
 import L from 'leaflet'
 export default {
   components: {
@@ -21,10 +24,13 @@ export default {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map)
       fetch('bike.json').then(r => r.json()).then(res => {
-        res.forEach(item => {
-          console.log(item.StationName.Zh_tw)
-          const m = L.marker([item.StationPosition.PositionLat, item.StationPosition.PositionLon])
-            .bindTooltip(item.StationName.Zh_tw)
+        const arr = formatter.stationFormatter(res)
+        console.log(arr)
+        arr.forEach(item => {
+          const m = L.marker(item.location)
+            .bindTooltip(item.name).on('click',() => {
+              map.panTo([item.location[0] + 0.02, item.location[1]])
+            })
           m.addTo(map)
         })
       })
