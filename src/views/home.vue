@@ -1,12 +1,17 @@
 <template>
 <div class="home">
-  <div class="search-bar">
-    <SearchBar/>
-    <transition name="slide-fade">
-      <Detail v-show="isPopUp" v-model:popUp="isPopUp"/>
-    </transition>
+  <header class="header">
+  </header>
+  <div id="map">
   </div>
-  <div id="map"></div>
+  <transition name="slide-fade">
+    <Detail v-show="locate.name"
+      :name="locate.name"
+      :serviceType="locate.serviceType"
+      :available="locate.available"
+      :availableReturn="locate.availableReturn"
+    />
+  </transition>
   <datalist id="station">
     <option v-for="item in list" :key="item" :value="item">{{item}}</option>
   </datalist>
@@ -15,7 +20,6 @@
 
 <script>
 import fetchData from '../lib/fetchData'
-import SearchBar from '../components/searchBar.vue'
 import Detail from '../components/detail.vue'
 import { onMounted, ref } from 'vue'
 import formatter from '../utils/formatter'
@@ -25,12 +29,12 @@ import 'leaflet.markercluster/dist/MarkerCluster.css'
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
 export default {
   components: {
-    SearchBar,
     Detail
   },
   setup () {
-    const isPopUp = ref(false)
+    const isPopUp = ref(true)
     const list = ref([])
+    let locate = ref({})
     let map
 
     const mapMarker = arr => {
@@ -38,11 +42,12 @@ export default {
       const sourceFormate = formatter.stationFormatter(source)
       const markers = L.markerClusterGroup()
       sourceFormate.forEach(item => {
+        console.log(item)
         list.value.push(item.name)
         const m = L.marker(item.location)
           .bindTooltip(item.name).on('click',() => {
-            isPopUp.value = !isPopUp.value
-            map.panTo([item.location[0] + 0.02, item.location[1]])
+            locate.value = { ...item }
+            map.panTo(item.location)
           })
         markers.addLayer(m)
       })
@@ -68,7 +73,8 @@ export default {
 
     return {
       isPopUp,
-      list
+      list,
+      locate
     }
   }
 }
@@ -76,11 +82,16 @@ export default {
 
 <style lang="scss" scoped>
 @import '../assets/scss/transition.scss';
-.search-bar{
-  height: 20vh;
+.home{
   position: relative;
+  .header{
+    height: 80px;
+  }
+  #map{
+    height: calc(100vh - 80px);
+    position: relative;
+  }
 }
-#map{
-  height: 80vh;
-}
+
+
 </style>
