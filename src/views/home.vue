@@ -2,8 +2,7 @@
 <div class="home">
   <header class="header">
   </header>
-  <div id="map">
-  </div>
+  <div id="map"></div>
   <transition name="slide-fade">
     <Detail v-show="locate.name"
       :name="locate.name"
@@ -37,12 +36,16 @@ export default {
     let locate = ref({})
     let map
 
+    // const man = L.icon({
+    //   iconUrl: 'icon/male.png',
+    //   iconSize:     [24, 24],
+    //   iconAnchor:   [12, 12]
+    // })
     const mapMarker = arr => {
       const source = formatter.stationMerger(arr[0], arr[1])
       const sourceFormate = formatter.stationFormatter(source)
       const markers = L.markerClusterGroup()
       sourceFormate.forEach(item => {
-        console.log(item)
         list.value.push(item.name)
         const m = L.marker(item.location)
           .bindTooltip(item.name).on('click',() => {
@@ -66,6 +69,10 @@ export default {
         console.log('move!!', event)
       })
 
+      // navigator.geolocation.getCurrentPosition(position => {
+      //   const p = position.coords
+      //   L.marker([p.latitude, p.longitude], { icon: man }).addTo(map)
+      // })
 
       Promise.all([fetchData.getStation(), fetchData.getBikeStatus()])
         .then(mapMarker)
