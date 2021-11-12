@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/taoyuan-ubike-v2/precache-manifest.e4606662f5b0069c40dfeebcfa6a0512.js"
+  "/taoyuan-ubike-v2/precache-manifest.4c86e2fc14847755d88094b0b63a934b.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "taoyuan-ubike-v2"});
