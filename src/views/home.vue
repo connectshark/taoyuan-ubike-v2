@@ -60,14 +60,22 @@ export default {
     onMounted(() => {
       map = L.map('map', {
         center: [24.968128, 121.194666],
+        minZoom: 8,
         zoom: 13
       })
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map)
-      map.on('movestart', function (event) {
-        console.log('move!!', event)
-      })
+      
+      L.geoJSON({
+        "type": "Feature",
+        "geometry": {
+          "type": "MultiLineString",
+          "coordinates": [
+            [ [121.194666, 24.968128], [121.212038, 24.960815] ]
+          ]
+        }
+      }).addTo(map)
 
       // navigator.geolocation.getCurrentPosition(position => {
       //   const p = position.coords

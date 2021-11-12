@@ -13,6 +13,13 @@ const fetchData = {
       })
     })
   },
+  getRoute () {
+    return new Promise(resolve => {
+      fetch('route.json').then(r => r.json()).then(res => {
+        resolve(res)
+      })
+    })
+  },
   // getStation () {
   //   return new Promise(resolve => {
   //     fetch(process.env.VUE_APP_API_URL + `Station/Taoyuan` + `?$format=JSON`).then(r => r.json()).then(res => {
