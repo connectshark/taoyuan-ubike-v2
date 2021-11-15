@@ -40,12 +40,19 @@ export default {
       const source = formatter.stationMerger(arr[0], arr[1])
       const sourceFormate = formatter.stationFormatter(source)
       const markers = L.markerClusterGroup({
-        disableClusteringAtZoom: 16
+        disableClusteringAtZoom: 16,
+        spiderfyOnMaxZoom: false
       })
       sourceFormate.forEach(item => {
         list.value.push(item.name)
-        const m = L.marker(item.location)
-          .bindTooltip(item.name).on('click',() => {
+        const m = L.marker(item.location, {
+          icon: L.divIcon({
+            html: `<div class="icon"><p>${item.available}</p></div>`,
+            iconSize: [50, 65],
+            iconAnchor: [25, 64],
+            className: 'custom'
+          })
+        }).bindTooltip(item.name).on('click',() => {
             locate.value = { ...item }
             map.panTo(item.location)
           })
