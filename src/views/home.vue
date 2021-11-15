@@ -36,11 +36,6 @@ export default {
     let locate = ref({})
     let map
 
-    // const man = L.icon({
-    //   iconUrl: 'icon/male.png',
-    //   iconSize:     [24, 24],
-    //   iconAnchor:   [12, 12]
-    // })
     const mapMarker = arr => {
       const source = formatter.stationMerger(arr[0], arr[1])
       const sourceFormate = formatter.stationFormatter(source)
@@ -67,15 +62,19 @@ export default {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map)
       
-      L.geoJSON({
-        "type": "Feature",
-        "geometry": {
-          "type": "MultiLineString",
-          "coordinates": [
-            [ [121.194666, 24.968128], [121.212038, 24.960815] ]
-          ]
-        }
-      }).addTo(map)
+
+      fetchData.getRoute().then(res => {
+        res.forEach(item => {
+          const r = formatter.multiLinesFormatter(item.Geometry)
+          L.geoJSON({
+            type: 'Feature',
+            geometry: {
+              type: 'MultiLineString',
+              coordinates: r
+            }
+          }).addTo(map)
+        })
+      })
 
       // navigator.geolocation.getCurrentPosition(position => {
       //   const p = position.coords
@@ -103,7 +102,7 @@ export default {
     height: 80px;
   }
   #map{
-    height: calc(100vh - 80px);
+    height: 300px;
     position: relative;
   }
 }

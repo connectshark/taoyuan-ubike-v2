@@ -29,6 +29,11 @@ const formatter = {
       sum.push(obj)
       return sum
     }, [])
+  },
+
+  multiLinesFormatter (string) {
+    return string.replace('MULTILINESTRING ((', '').replace('))', '').split('),(')
+      .map(item => item.split(',').map(item => item.split(' ').map(item => parseFloat(item))))
   }
 }
 

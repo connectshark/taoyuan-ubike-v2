@@ -14,14 +14,16 @@ const fetchData = {
   },
   getRoute () {
     return new Promise(resolve => {
-      fetch('route.json').then(r => r.json()).then(res => {
+      fetch(process.env.VUE_APP_API_URL + `/Cycling/Shape/Taoyuan` + `?$format=JSON`, {
+        headers: this.getAuthorizationHeader()
+      }).then(r => r.json()).then(res => {
         resolve(res)
       })
     })
   },
   getStation () {
     return new Promise(resolve => {
-      fetch(process.env.VUE_APP_API_URL + `Station/Taoyuan` + `?$format=JSON`, {
+      fetch(process.env.VUE_APP_API_URL + `/Bike/Station/Taoyuan` + `?$format=JSON`, {
         headers: this.getAuthorizationHeader()
       }).then(r => r.json()).then(res => {
         resolve(res)
@@ -30,7 +32,7 @@ const fetchData = {
   },
   getBikeStatus () {
     return new Promise(resolve => {
-      fetch(process.env.VUE_APP_API_URL + `Availability/Taoyuan` + `?$format=JSON`, {
+      fetch(process.env.VUE_APP_API_URL + `/Bike/Availability/Taoyuan` + `?$format=JSON`, {
         headers: this.getAuthorizationHeader()
       }).then(r => r.json()).then(res => {
         resolve(res)
