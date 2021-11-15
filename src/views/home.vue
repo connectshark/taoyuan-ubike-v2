@@ -39,7 +39,9 @@ export default {
     const mapMarker = arr => {
       const source = formatter.stationMerger(arr[0], arr[1])
       const sourceFormate = formatter.stationFormatter(source)
-      const markers = L.markerClusterGroup()
+      const markers = L.markerClusterGroup({
+        disableClusteringAtZoom: 16
+      })
       sourceFormate.forEach(item => {
         list.value.push(item.name)
         const m = L.marker(item.location)
@@ -50,38 +52,39 @@ export default {
         markers.addLayer(m)
       })
       map.addLayer(markers)
+
+      const layerGroup = L.layerGroup()
+      arr[2].forEach(item => {
+        const r = formatter.multiLinesFormatter(item.Geometry)
+        const line = L.geoJSON({
+          type: 'Feature',
+          geometry: {
+            type: 'MultiLineString',
+            coordinates: r
+          }
+        }).bindPopup(item.RouteName).bindTooltip(item.RouteName)
+        layerGroup.addLayer(line)
+      })
+      map.addLayer(layerGroup)
+
+      L.control.layers({}, {
+        自行車: markers,
+        車道: layerGroup
+      }).addTo(map)
     }
 
     onMounted(() => {
+      const layer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      })
       map = L.map('map', {
         center: [24.968128, 121.194666],
         minZoom: 8,
-        zoom: 13
-      })
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map)
-      
-
-      fetchData.getRoute().then(res => {
-        res.forEach(item => {
-          const r = formatter.multiLinesFormatter(item.Geometry)
-          L.geoJSON({
-            type: 'Feature',
-            geometry: {
-              type: 'MultiLineString',
-              coordinates: r
-            }
-          }).addTo(map)
-        })
+        zoom: 13,
+        layers: layer
       })
 
-      // navigator.geolocation.getCurrentPosition(position => {
-      //   const p = position.coords
-      //   L.marker([p.latitude, p.longitude], { icon: man }).addTo(map)
-      // })
-
-      Promise.all([fetchData.getStation(), fetchData.getBikeStatus()])
+      Promise.all([fetchData.getStation(), fetchData.getBikeStatus(), fetchData.getRoute()])
         .then(mapMarker)
     })
 
@@ -102,7 +105,7 @@ export default {
     height: 80px;
   }
   #map{
-    height: 300px;
+    height: 80vh;
     position: relative;
   }
 }
