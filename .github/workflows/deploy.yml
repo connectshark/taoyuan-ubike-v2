@@ -13,6 +13,8 @@ jobs:
           npm run build
         env:
           VUE_APP_API_URL : ${{ secrets.VUE_APP_API_URL }}
+          VUE_APP_APPID : ${{ secrets.VUE_APP_APPID }}
+          VUE_APP_KEY : ${{ secrets.VUE_APP_KEY }}
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
