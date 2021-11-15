@@ -1,18 +1,17 @@
+import jsSHA from 'jssha'
+
 const fetchData = {
-  // getStation () {
-  //   return new Promise(resolve => {
-  //     fetch('bike.json').then(r => r.json()).then(res => {
-  //       resolve(res)
-  //     })
-  //   })
-  // },
-  // getBikeStatus () {
-  //   return new Promise(resolve => {
-  //     fetch('bikeState.json').then(r => r.json()).then(res => {
-  //       resolve(res)
-  //     })
-  //   })
-  // },
+  getAuthorizationHeader () {
+    let GMTString = new Date().toGMTString()
+    let ShaObj = new jsSHA('SHA-1', 'TEXT')
+    ShaObj.setHMACKey(process.env.VUE_APP_KEY, 'TEXT')
+    ShaObj.update('x-date: ' + GMTString)
+    let HMAC = ShaObj.getHMAC('B64')
+    return {
+      Authorization: `hmac username="${process.env.VUE_APP_APPID}", algorithm="hmac-sha1", headers="x-date", signature="${HMAC}"`,
+      'X-Date': GMTString
+    }
+  },
   getRoute () {
     return new Promise(resolve => {
       fetch('route.json').then(r => r.json()).then(res => {
@@ -22,14 +21,18 @@ const fetchData = {
   },
   getStation () {
     return new Promise(resolve => {
-      fetch(process.env.VUE_APP_API_URL + `Station/Taoyuan` + `?$format=JSON`).then(r => r.json()).then(res => {
+      fetch(process.env.VUE_APP_API_URL + `Station/Taoyuan` + `?$format=JSON`, {
+        headers: this.getAuthorizationHeader()
+      }).then(r => r.json()).then(res => {
         resolve(res)
       })
     })
   },
   getBikeStatus () {
     return new Promise(resolve => {
-      fetch(process.env.VUE_APP_API_URL + `Availability/Taoyuan` + `?$format=JSON`).then(r => r.json()).then(res => {
+      fetch(process.env.VUE_APP_API_URL + `Availability/Taoyuan` + `?$format=JSON`, {
+        headers: this.getAuthorizationHeader()
+      }).then(r => r.json()).then(res => {
         resolve(res)
       })
     })
