@@ -47,9 +47,9 @@ export default {
         list.value.push(item.name)
         const m = L.marker(item.location, {
           icon: L.divIcon({
-            html: `<div class="icon"><p>${item.available}</p></div>`,
-            iconSize: [50, 65],
-            iconAnchor: [25, 64],
+            html: `<div class="icon"><span class="material-icons-outlined">directions_bike</span></div>`,
+            iconSize: [40, 50],
+            iconAnchor: [20, 49],
             className: 'custom'
           })
         }).bindTooltip(item.name).on('click',() => {

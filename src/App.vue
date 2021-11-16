@@ -18,16 +18,17 @@ export default {
   text-align: center;
 }
 .icon{
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background-color: #331245;
+  background-color: #fda085;
   text-align: center;
   position: relative;
-  p{
+  span{
     color: #fff;
-    line-height: 50px;
+    line-height: 40px;
     font-size: 20px;
+    font-family: 'Material Icons';
   }
   &::before{
     content: '';
@@ -38,9 +39,9 @@ export default {
     margin: auto;
     width: 0;
     height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 20px solid #331245;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 15px solid #fda085;
   }
 }
 </style>
