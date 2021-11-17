@@ -11,6 +11,9 @@
       :availableReturn="locate.availableReturn"
     />
   </transition>
+  <div class="btn" @click="getNow">
+    找位置
+  </div>
   <datalist id="station">
     <option v-for="item in list" :key="item" :value="item">{{item}}</option>
   </datalist>
@@ -35,6 +38,22 @@ export default {
     const list = ref([])
     let locate = ref({})
     let map
+
+    let here = undefined
+
+    const getNow = () => {
+      navigator.geolocation.getCurrentPosition(position => {
+        const p = position.coords
+        const location = [p.latitude, p.longitude]
+        if (here) {
+          here.setLatLng(location)
+        } else {
+          here = L.marker(location).bindPopup('你在這兒')
+          here.addTo(map)
+        }
+        map.panTo(location)
+      })
+    }
 
     const mapMarker = arr => {
       const source = formatter.stationMerger(arr[0], arr[1])
@@ -69,7 +88,7 @@ export default {
             type: 'MultiLineString',
             coordinates: r
           }
-        }).bindPopup(item.RouteName).bindTooltip(item.RouteName)
+        }, { weight: 5, color: '#cc2918' }).bindPopup(item.RouteName).bindTooltip(item.RouteName)
         layerGroup.addLayer(line)
       })
       map.addLayer(layerGroup)
@@ -86,8 +105,9 @@ export default {
       })
       map = L.map('map', {
         center: [24.968128, 121.194666],
-        minZoom: 8,
+        minZoom: 10,
         zoom: 13,
+        maxZoom: 16,
         layers: layer
       })
 
@@ -98,7 +118,8 @@ export default {
     return {
       isPopUp,
       list,
-      locate
+      locate,
+      getNow
     }
   }
 }
@@ -112,7 +133,7 @@ export default {
     height: 80px;
   }
   #map{
-    height: 80vh;
+    height: 50vh;
     position: relative;
   }
 }
