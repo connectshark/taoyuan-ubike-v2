@@ -14,6 +14,13 @@
   <div class="btn" @click="getNow">
     找位置
   </div>
+  <div class="btn" @click="modal = !modal">跳起來</div>
+  <teleport to="body">
+    <Modal v-model:modal="modal">
+      <h3>hi</h3>
+      <p>這就是跳窗內容</p>
+    </Modal>
+  </teleport>
   <datalist id="station">
     <option v-for="item in list" :key="item" :value="item">{{item}}</option>
   </datalist>
@@ -23,6 +30,7 @@
 <script>
 import fetchData from '../lib/fetchData'
 import Detail from '../components/detail.vue'
+import Modal from '../components/modal.vue'
 import { onMounted, ref } from 'vue'
 import formatter from '../utils/formatter'
 import L from 'leaflet'
@@ -31,7 +39,8 @@ import 'leaflet.markercluster/dist/MarkerCluster.css'
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
 export default {
   components: {
-    Detail
+    Detail,
+    Modal
   },
   setup () {
     const isPopUp = ref(true)
@@ -115,10 +124,13 @@ export default {
         .then(mapMarker)
     })
 
+    const modal = ref(false)
+
     return {
       isPopUp,
       list,
       locate,
+      modal,
       getNow
     }
   }
@@ -137,6 +149,5 @@ export default {
     position: relative;
   }
 }
-
 
 </style>
