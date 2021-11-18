@@ -1,9 +1,11 @@
 <template>
-<div class="modal-background" @click="$emit('update:modal', false)" v-if="modal">
-  <div class="modal">
-    <slot></slot>
+<transition name="fade">
+  <div class="modal-background" @click="$emit('update:modal', false)" v-if="modal">
+    <div class="modal">
+      <slot></slot>
+    </div>
   </div>
-</div>
+</transition>
 </template>
 
 <script>
@@ -14,22 +16,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@keyframes pop {
-  0%{
-    transform: translateY(60vh);
-  }
-  100%{
-    transform: translateY(0);
-  }
-}
-@keyframes fadeIn {
-  0%{
-  background-color: #cccccc00;
-  }
-  100%{
-  background-color: #cccccccc;
-  }
-}
 .modal-background{
   position: fixed;
   width: 100%;
@@ -37,8 +23,7 @@ export default {
   top: 0;
   left: 0;
   z-index: 1000;
-  animation: fadeIn .4s ease-in-out;
-  background-color: #cccccccc;
+  background-color: #000000cc;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -50,7 +35,23 @@ export default {
     border-radius: 20px 20px 0 0;
     padding: 20px;
     box-sizing: border-box;
-    animation: pop .4s ease-in-out;
+    transition: transform .3s ease-in-out;
   }
+}
+
+.fade-enter-from, .fade-leave-to{
+  background-color: #00000000;
+  .modal{
+    transform: translateY(60vh);
+  }
+}
+.fade-enter-to, .fade-leave-from{
+  background-color: #000000cc;
+  .modal{
+    transform: translateY(0);
+  }
+}
+.fade-enter-active, .fade-leave-active{
+  transition: background .3s ease;
 }
 </style>
