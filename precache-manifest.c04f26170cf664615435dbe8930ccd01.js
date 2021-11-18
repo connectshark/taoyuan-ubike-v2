@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "72fa39530a9cb6762f33",
+    "revision": "46bb62629191f876ab5a",
     "url": "/taoyuan-ubike-v2/css/app.452a0008.css"
   },
   {
@@ -8,24 +8,24 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/taoyuan-ubike-v2/css/chunk-09cdff06.ce3ca28c.css"
   },
   {
-    "revision": "373ff4467de29c060267",
-    "url": "/taoyuan-ubike-v2/css/chunk-ae52cfe8.c8ded112.css"
+    "revision": "9b3f531da2790588559e",
+    "url": "/taoyuan-ubike-v2/css/chunk-7d273314.9a878953.css"
   },
   {
-    "revision": "e4ea79e04e24edf5e5cd507f5b0b2b91",
+    "revision": "fa95e8ba09b3a79af7a0ca67568812c3",
     "url": "/taoyuan-ubike-v2/index.html"
   },
   {
-    "revision": "72fa39530a9cb6762f33",
-    "url": "/taoyuan-ubike-v2/js/app-legacy.6732ba8b.js"
+    "revision": "46bb62629191f876ab5a",
+    "url": "/taoyuan-ubike-v2/js/app-legacy.f4dc70f7.js"
   },
   {
     "revision": "80b370d2c2333acd60e8",
     "url": "/taoyuan-ubike-v2/js/chunk-09cdff06-legacy.56b3242f.js"
   },
   {
-    "revision": "373ff4467de29c060267",
-    "url": "/taoyuan-ubike-v2/js/chunk-ae52cfe8-legacy.a2cddde3.js"
+    "revision": "9b3f531da2790588559e",
+    "url": "/taoyuan-ubike-v2/js/chunk-7d273314-legacy.ba337db6.js"
   },
   {
     "revision": "9c3653273643b5dedef9",
