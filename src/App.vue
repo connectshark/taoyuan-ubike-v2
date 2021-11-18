@@ -16,6 +16,7 @@ export default {
 #app {
   font-family: 'Roboto Mono', monospace, 'openhuninn', 'Noto Sans TC', sans-serif;
   text-align: center;
+  color: #223322;
 }
 .icon{
   width: 40px;

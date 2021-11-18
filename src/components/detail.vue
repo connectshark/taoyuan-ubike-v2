@@ -19,18 +19,10 @@
 <script>
 export default {
   props: {
-    name: {
-      type: String
-    },
-    serviceType: {
-      type: Number
-    },
-    available: {
-      type: Number
-    },
-    availableReturn: {
-      type: Number
-    }
+    name: String,
+    serviceType: Number,
+    available: Number,
+    availableReturn: Number
   },
   setup () {
     return {

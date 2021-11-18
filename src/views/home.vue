@@ -1,16 +1,7 @@
 <template>
 <div class="home">
-  <header class="header">
-  </header>
+  <HeadWrapper/>
   <div id="map"></div>
-  <transition name="slide-fade">
-    <Detail v-show="locate.name"
-      :name="locate.name"
-      :serviceType="locate.serviceType"
-      :available="locate.available"
-      :availableReturn="locate.availableReturn"
-    />
-  </transition>
   <div class="btn" @click="getNow">
     找位置
   </div>
@@ -29,8 +20,8 @@
 
 <script>
 import fetchData from '../lib/fetchData'
-import Detail from '../components/detail.vue'
 import Modal from '../components/modal.vue'
+import HeadWrapper from '../components/headWrapper.vue'
 import { onMounted, ref } from 'vue'
 import formatter from '../utils/formatter'
 import L from 'leaflet'
@@ -39,7 +30,7 @@ import 'leaflet.markercluster/dist/MarkerCluster.css'
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
 export default {
   components: {
-    Detail,
+    HeadWrapper,
     Modal
   },
   setup () {
@@ -140,13 +131,8 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/scss/transition.scss';
 .home{
-  position: relative;
-  .header{
-    height: 80px;
-  }
   #map{
-    height: 50vh;
-    position: relative;
+    height: 51vh;
   }
 }
 

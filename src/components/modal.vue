@@ -1,8 +1,8 @@
 <template>
 <transition name="fade">
   <div class="modal-background" @click="$emit('update:modal', false)" v-if="modal">
-    <div class="modal">
-      <slot></slot>
+    <div class="modal" @click.stop>
+      <slot/>
     </div>
   </div>
 </transition>
@@ -30,7 +30,9 @@ export default {
   justify-content: flex-end;
   .modal{
     width: 90%;
+    max-width: 600px;
     height: 60vh;
+    min-height: 300px;
     background-color: #fff;
     border-radius: 20px 20px 0 0;
     padding: 20px;
