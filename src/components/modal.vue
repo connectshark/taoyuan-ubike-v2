@@ -29,7 +29,7 @@ export default {
   align-items: center;
   justify-content: flex-end;
   .modal{
-    width: 90%;
+    width: 100%;
     max-width: 600px;
     height: 60vh;
     min-height: 300px;

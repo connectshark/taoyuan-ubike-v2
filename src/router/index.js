@@ -6,6 +6,11 @@ const router = createRouter({
   history,
   routes: [
     {
+      path: '/welcome',
+      name: 'welcome',
+      component: () => import('../views/welcome.vue')
+    },
+    {
       path: '/',
       name: 'home',
       component: () => import('../views/home.vue')

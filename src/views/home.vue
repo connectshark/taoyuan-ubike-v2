@@ -1,9 +1,12 @@
 <template>
 <div class="home">
-  <HeadWrapper/>
-  <div id="map"></div>
-  <div class="btn" @click="getNow">
-    找位置
+  <div id="map">
+    <div class="btn-group" @click.stop>
+      <div class="btn" @click="getNow">
+        <i class='bx bxs-map bx-tada-hover' v-if="userLocation"></i>
+        <i class='bx bx-map bx-tada-hover' v-else></i>
+      </div>
+    </div>
   </div>
   <div class="btn" @click="modal = !modal">跳起來</div>
   <teleport to="body">
@@ -21,7 +24,6 @@
 <script>
 import fetchData from '../lib/fetchData'
 import Modal from '../components/modal.vue'
-import HeadWrapper from '../components/headWrapper.vue'
 import { onMounted, ref } from 'vue'
 import formatter from '../utils/formatter'
 import L from 'leaflet'
@@ -30,17 +32,19 @@ import 'leaflet.markercluster/dist/MarkerCluster.css'
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
 export default {
   components: {
-    HeadWrapper,
     Modal
   },
   setup () {
-    const isPopUp = ref(true)
     const list = ref([])
     let locate = ref({})
     let map
 
     let here = undefined
 
+    /**
+     * 判斷使用者地點
+     */
+    const userLocation = ref(false)
     const getNow = () => {
       navigator.geolocation.getCurrentPosition(position => {
         const p = position.coords
@@ -51,7 +55,14 @@ export default {
           here = L.marker(location).bindPopup('你在這兒')
           here.addTo(map)
         }
-        map.panTo(location)
+        map.flyTo(location, 15)
+        userLocation.value = true
+      }, () => {
+        if (here) {
+          map.removeLayer(here)
+          here = undefined
+        }
+        userLocation.value = false
       })
     }
 
@@ -71,10 +82,12 @@ export default {
             iconAnchor: [20, 49],
             className: 'custom'
           })
-        }).bindTooltip(item.name).on('click',() => {
-            locate.value = { ...item }
-            map.panTo(item.location)
-          })
+        })
+        .bindTooltip(item.name)
+        .on('click', () => {
+          locate.value = { ...item }
+          map.panTo(item.location)
+        })
         markers.addLayer(m)
       })
       map.addLayer(markers)
@@ -118,11 +131,11 @@ export default {
     const modal = ref(false)
 
     return {
-      isPopUp,
       list,
       locate,
       modal,
-      getNow
+      getNow,
+      userLocation
     }
   }
 }
@@ -131,8 +144,27 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/scss/transition.scss';
 .home{
+  max-width: 600px;
+  margin: auto;
   #map{
     height: 51vh;
+    .btn-group{
+      position: absolute;
+      z-index: 401;
+      right: 20px;
+      bottom: 20px;
+      .btn{
+        background-color: #fff;
+        border-radius: 50%;
+        font-size: 30px;
+        line-height: 30px;
+        color: #6e6e6e;
+        cursor: pointer;
+        &:hover{
+          color: #333;
+        }
+      }
+    }
   }
 }
 

@@ -1,11 +1,14 @@
 <template>
+  <HeadWrapper/>
   <router-view></router-view>
 </template>
 
 <script>
+import HeadWrapper from './components/headWrapper.vue'
 export default {
   name: 'App',
   components: {
+    HeadWrapper
   },
   setup () {
   }
