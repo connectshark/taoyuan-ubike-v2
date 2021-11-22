@@ -11,8 +11,12 @@
   <div class="btn" @click="modal = !modal">跳起來</div>
   <teleport to="body">
     <Modal v-model:modal="modal">
-      <h3>hi</h3>
-      <p>這就是跳窗內容</p>
+      <Detail
+        :name="locate.name"
+        :serviceType="locate.serviceType"
+        :available="locate.available"
+        :availableReturn="locate.availableReturn"
+      />
     </Modal>
   </teleport>
   <datalist id="station">
@@ -30,9 +34,11 @@ import L from 'leaflet'
 import 'leaflet.markercluster/dist/leaflet.markercluster'
 import 'leaflet.markercluster/dist/MarkerCluster.css'
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
+import Detail from '../components/detail.vue'
 export default {
   components: {
-    Modal
+    Modal,
+    Detail
   },
   setup () {
     const list = ref([])
@@ -87,6 +93,7 @@ export default {
         .on('click', () => {
           locate.value = { ...item }
           map.panTo(item.location)
+          modal.value = true
         })
         markers.addLayer(m)
       })

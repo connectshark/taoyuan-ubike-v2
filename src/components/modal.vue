@@ -35,7 +35,6 @@ export default {
     min-height: 300px;
     background-color: #fff;
     border-radius: 20px 20px 0 0;
-    padding: 20px;
     box-sizing: border-box;
     transition: transform .3s ease-in-out;
   }

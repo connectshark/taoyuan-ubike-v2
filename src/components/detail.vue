@@ -34,20 +34,9 @@ export default {
 
 <style lang="scss" scoped>
 .detail{
-  position: absolute;
-  background-color: #fff;
-  bottom: 5%;
-  right: 0;
-  left: 0;
-  margin: auto;
-  width: 90%;
-  max-width: 320px;
-  z-index: 400;
-  border-radius: 20px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  overflow: hidden;
+  text-align: center;
   .title{
-    font-size: 14px;
+    font-size: 20px;
     line-height: 2;
     color: #fff;
     background-color: #022020;
