@@ -17,6 +17,7 @@ export default {
 
 <style lang="scss" scoped>
 .modal-background{
+  font-family: 'Roboto Mono', monospace, 'openhuninn', 'Noto Sans TC', sans-serif;
   position: fixed;
   width: 100%;
   height: 100%;
