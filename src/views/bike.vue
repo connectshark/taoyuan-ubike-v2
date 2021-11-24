@@ -1,14 +1,23 @@
 <template>
-<div class="home">
+<div class="bike">
+  <div class="switch">
+    <div class="bar">
+      <p class="item" :class="{ active: toggle }" @click="toggle = true">
+        <i class='bx bx-map-pin bx-tada-hover'></i>
+      </p>
+      <p class="item" :class="{ active: !toggle }" @click="toggle = false">
+        <i class='bx bx-list-ul bx-tada-hover' ></i>
+      </p>
+    </div>
+  </div>
   <div id="map">
     <div class="btn-group" @click.stop>
       <div class="btn" @click="getNow">
-        <i class='bx bxs-map bx-tada-hover' v-if="userLocation"></i>
+        <i class='bx bxs-map bx-tada-hover' v-if="userHere.length > 1"></i>
         <i class='bx bx-map bx-tada-hover' v-else></i>
       </div>
     </div>
   </div>
-  <div class="btn" @click="modal = !modal">跳起來</div>
   <teleport to="body">
     <Modal v-model:modal="modal">
       <Detail
@@ -17,6 +26,10 @@
         :available="locate.available"
         :availableReturn="locate.availableReturn"
       />
+      <template v-if="locate.location">
+      <a class="link" v-if="userHere.length > 1" :href="`https://www.google.com/maps/dir/${userHere[0]},${userHere[1]}/${locate.location[0]},${locate.location[1]}`" target="_blank" rel="noopener noreferrer"><i class='bx bxs-direction-right' ></i>導航</a>
+      <a class="link" v-else :href="`https://www.google.com.tw/maps/place/${locate.location[0]},${locate.location[1]}`" target="_blank" rel="noopener noreferrer"><i class='bx bx-map-alt'></i>在google map查看</a>
+      </template>
     </Modal>
   </teleport>
   <datalist id="station">
@@ -43,14 +56,11 @@ export default {
   setup () {
     const list = ref([])
     let locate = ref({})
+    const userHere = ref([])
     let map
 
     let here = undefined
 
-    /**
-     * 判斷使用者地點
-     */
-    const userLocation = ref(false)
     const getNow = () => {
       navigator.geolocation.getCurrentPosition(position => {
         const p = position.coords
@@ -62,13 +72,13 @@ export default {
           here.addTo(map)
         }
         map.flyTo(location, 15)
-        userLocation.value = true
+        userHere.value = location
       }, () => {
         if (here) {
           map.removeLayer(here)
           here = undefined
         }
-        userLocation.value = false
+        userHere.value = []
       })
     }
 
@@ -137,12 +147,14 @@ export default {
 
     const modal = ref(false)
 
+    const toggle = ref(true)
     return {
       list,
       locate,
       modal,
       getNow,
-      userLocation
+      userHere,
+      toggle
     }
   }
 }
@@ -150,11 +162,34 @@ export default {
 
 <style lang="scss" scoped>
 @import '../assets/scss/transition.scss';
-.home{
+@import '../assets/scss/mixin.scss';
+.bike{
   max-width: 600px;
   margin: auto;
+  .switch{
+    padding: 10px 0;
+    .bar{
+      width: 80px;
+      margin: auto;
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 0 0 0 2px $main;
+      .item{
+        font-size: 20px;
+        color: $main;
+        background-color: #fff;
+        display: inline-block;
+        width: 50%;
+        transition: color .3s ease, background .3s ease;
+      }
+      .active{
+        color: #fff;
+        background-color: $main;
+      }
+    }
+  }
   #map{
-    height: 50vh;
+    height: 500px;
     .btn-group{
       position: absolute;
       z-index: 401;

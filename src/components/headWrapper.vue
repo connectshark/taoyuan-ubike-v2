@@ -50,6 +50,7 @@ export default {
   justify-content: space-between;
   max-width: 600px;
   margin: auto;
+  z-index: 1001;
   .logo{
     img{
       width: 30px;

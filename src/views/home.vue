@@ -105,22 +105,6 @@ export default {
     ul{
       li{
         padding: 10px 0;
-        .link{
-          color: $main;
-          text-decoration: none;
-          background-color: #fff;
-          border: 2px solid $main;
-          border-radius: 10px;
-          padding: 10px 20px;
-          font-size: 16px;
-          line-height: 3;
-          font-weight: bold;
-          transition: color .3s ease-in-out, background .3s ease-in-out;
-          &:hover{
-            color: #fff;
-            background-color: $main;
-          }
-        }
       }
     }
   }

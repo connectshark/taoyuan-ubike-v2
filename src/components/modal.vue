@@ -23,12 +23,13 @@ export default {
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 1002;
   background-color: #000000cc;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: flex-end;
+  text-align: center;
   .modal{
     width: 100%;
     max-width: 600px;
