@@ -8,48 +8,48 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/taoyuan-ubike-v2/bikeState.json"
   },
   {
-    "revision": "e38477414ade7e47ddaa",
-    "url": "/taoyuan-ubike-v2/css/app.43ff9377.css"
+    "revision": "e3ede0cfb499be92409b",
+    "url": "/taoyuan-ubike-v2/css/app.53f0b3e0.css"
   },
   {
     "revision": "ea302a4d98b2e2d1128b",
     "url": "/taoyuan-ubike-v2/css/chunk-09cdff06.ce3ca28c.css"
   },
   {
-    "revision": "e52a5004c4369de63817",
-    "url": "/taoyuan-ubike-v2/css/chunk-3fb273b5.3e90f170.css"
+    "revision": "22bc6e899871d9256172",
+    "url": "/taoyuan-ubike-v2/css/chunk-5485854b.362129a4.css"
   },
   {
-    "revision": "82b7b3d17ef5fd4e6458",
-    "url": "/taoyuan-ubike-v2/css/chunk-9a689e3e.08af50c0.css"
+    "revision": "11a9dc67db6fc3e24543",
+    "url": "/taoyuan-ubike-v2/css/chunk-f26cad2a.65d418a1.css"
   },
   {
     "revision": "2d8fe85b595a42cce662a78b344c4f4f",
     "url": "/taoyuan-ubike-v2/icon/male.png"
   },
   {
-    "revision": "b3188d5e112e8f06a203661b57934c7e",
+    "revision": "df065eff966a884a593c487314719195",
     "url": "/taoyuan-ubike-v2/index.html"
   },
   {
-    "revision": "e38477414ade7e47ddaa",
-    "url": "/taoyuan-ubike-v2/js/app.be48c4ce.js"
+    "revision": "e3ede0cfb499be92409b",
+    "url": "/taoyuan-ubike-v2/js/app.90d8585c.js"
   },
   {
     "revision": "ea302a4d98b2e2d1128b",
     "url": "/taoyuan-ubike-v2/js/chunk-09cdff06.6ffbef67.js"
   },
   {
-    "revision": "e52a5004c4369de63817",
-    "url": "/taoyuan-ubike-v2/js/chunk-3fb273b5.e34c1ece.js"
+    "revision": "22bc6e899871d9256172",
+    "url": "/taoyuan-ubike-v2/js/chunk-5485854b.e8062b2c.js"
   },
   {
-    "revision": "82b7b3d17ef5fd4e6458",
-    "url": "/taoyuan-ubike-v2/js/chunk-9a689e3e.cd9a342f.js"
+    "revision": "11a9dc67db6fc3e24543",
+    "url": "/taoyuan-ubike-v2/js/chunk-f26cad2a.cb3b112a.js"
   },
   {
-    "revision": "6240a98c3c94296e1c3a",
-    "url": "/taoyuan-ubike-v2/js/chunk-vendors.af860d78.js"
+    "revision": "ecedd9d97e2354e8b5f9",
+    "url": "/taoyuan-ubike-v2/js/chunk-vendors.19cbe281.js"
   },
   {
     "revision": "388bf863200740a3c1ae722c54638844",
