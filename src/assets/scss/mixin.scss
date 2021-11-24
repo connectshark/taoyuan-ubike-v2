@@ -1,0 +1,14 @@
+@import './color.scss';
+.btn{
+  background-color: $main;
+  border-radius: 20px;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  line-height: 40px;
+  opacity: 1;
+  transition: opacity .3s;
+  &:hover{
+    opacity: .9;
+  }
+}
