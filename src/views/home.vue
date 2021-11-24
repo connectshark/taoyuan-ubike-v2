@@ -24,6 +24,14 @@
       :btnType="1"
     />
   </section>
+  <section class="links">
+    <h3>相關站點</h3>
+    <ul>
+      <li>
+        <a class="link" href="https://shopee.nosegates.com/" target="_blank" rel="noopener noreferrer">蝦皮短網址</a>
+      </li>
+    </ul>
+  </section>
 </div>
 </template>
 
@@ -50,7 +58,7 @@ export default {
   max-width: 600px;
   margin: auto;
   .hero{
-    background-image: url('https://source.unsplash.com/random/6000x600/');
+    background-image: url('https://source.unsplash.com/random/600x600/');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -84,8 +92,37 @@ export default {
       }
     }
   }
-  .introduce{
+  section{
     padding: 40px 0;
+  }
+  .links{
+    background-image: linear-gradient(to bottom,#F6F7F9 0% ,#fff 100% );
+    h3{
+      font-size: 20px;
+      line-height: 2;
+      font-weight: bold;
+    }
+    ul{
+      li{
+        padding: 10px 0;
+        .link{
+          color: $main;
+          text-decoration: none;
+          background-color: #fff;
+          border: 2px solid $main;
+          border-radius: 10px;
+          padding: 10px 20px;
+          font-size: 16px;
+          line-height: 3;
+          font-weight: bold;
+          transition: color .3s ease-in-out, background .3s ease-in-out;
+          &:hover{
+            color: #fff;
+            background-color: $main;
+          }
+        }
+      }
+    }
   }
 }
 
