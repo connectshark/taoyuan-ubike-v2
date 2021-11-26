@@ -10,7 +10,7 @@
       </p>
     </div>
   </div>
-  <div id="map">
+  <div id="map" v-show="toggle">
     <div class="btn-group" @click.stop>
       <div class="btn" @click="getNow">
         <i class='bx bxs-map bx-tada-hover' v-if="userHere.length > 1"></i>

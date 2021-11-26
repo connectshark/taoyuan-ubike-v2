@@ -42,9 +42,6 @@ export default {
     Card
   },
   setup () {
-    return {
-
-    }
   }
 }
 </script>
